@@ -57,9 +57,9 @@ Disassembly of section .text:
   2a:	00 00       	nop
   2c:	3f c0       	rjmp	.+126    	; 0xac <__bad_interrupt>
   2e:	00 00       	nop
-  30:	5f c0       	rjmp	.+190    	; 0xf0 <__vector_12>
+  30:	3d c0       	rjmp	.+122    	; 0xac <__bad_interrupt>
   32:	00 00       	nop
-  34:	3b c0       	rjmp	.+118    	; 0xac <__bad_interrupt>
+  34:	5d c0       	rjmp	.+186    	; 0xf0 <__vector_13>
   36:	00 00       	nop
   38:	39 c0       	rjmp	.+114    	; 0xac <__bad_interrupt>
   3a:	00 00       	nop
@@ -137,9 +137,9 @@ Disassembly of section .text:
 
 void init_interrupt_timer1_nor()
 {
-	TIMSK |=1<<OCIE1A;
+	TIMSK |=(1<<OCIE1B); //| (1<<OCIE1B) ;
   ae:	87 b7       	in	r24, 0x37	; 55
-  b0:	80 61       	ori	r24, 0x10	; 16
+  b0:	88 60       	ori	r24, 0x08	; 8
   b2:	87 bf       	out	0x37, r24	; 55
 	sei();
   b4:	78 94       	sei
@@ -214,13 +214,13 @@ int main(void)
   ec:	f6 df       	rcall	.-20     	; 0xda <led_put>
   ee:	ff cf       	rjmp	.-2      	; 0xee <main+0x8>
 
-000000f0 <__vector_12>:
+000000f0 <__vector_13>:
   f0:	1f 92       	push	r1
 	{
 	}
 }
 
-ISR(TIMER1_COMPA_vect)
+ISR(TIMER1_COMPB_vect)
 {
   f2:	0f 92       	push	r0
   f4:	0f b6       	in	r0, 0x3f	; 63
@@ -249,7 +249,7 @@ ISR(TIMER1_COMPA_vect)
  124:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
 	if(counter==1)
  128:	01 97       	sbiw	r24, 0x01	; 1
- 12a:	59 f4       	brne	.+22     	; 0x142 <__vector_12+0x52>
+ 12a:	59 f4       	brne	.+22     	; 0x142 <__vector_13+0x52>
 	{
 		counter=0;
  12c:	10 92 01 01 	sts	0x0101, r1	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>

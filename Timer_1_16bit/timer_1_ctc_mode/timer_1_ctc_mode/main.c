@@ -19,7 +19,7 @@ int main(void)
 	{
 	}
 }
-
+//1s
 ISR(TIMER1_COMPA_vect)
 {
 	
@@ -43,7 +43,7 @@ void timer_1()
 	TCCR1B|= (0<<ICNC1) | (0<<ICES1) | (0<<0) | ( 0<<WGM13) | (1<<WGM12) |pres_256;
     TCCR1C = 0x00;
 	
-	OCR1AH = 0x7A;
+	OCR1AH = 0x7A; // Tong OCR1A = 31249
 	OCR1AL = 0x11;
 	
 	init_interrupt_timer1_nor();
@@ -51,7 +51,7 @@ void timer_1()
 
 void init_interrupt_timer1_nor()
 {
-	TIMSK |=1<<OCIE1A;
+	TIMSK |=(1<<OCIE1A); //| (1<<OCIE1B) ;
 	sei();
 }
 

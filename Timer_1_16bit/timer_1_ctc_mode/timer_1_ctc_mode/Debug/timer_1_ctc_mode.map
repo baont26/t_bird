@@ -234,6 +234,7 @@ END GROUP
                 0x000000ac                __vector_32
                 0x000000ac                __vector_34
                 0x000000ac                __vector_24
+                0x000000ac                __vector_12
                 0x000000ac                __bad_interrupt
                 0x000000ac                __vector_6
                 0x000000ac                __vector_31
@@ -242,7 +243,6 @@ END GROUP
                 0x000000ac                __vector_30
                 0x000000ac                __vector_25
                 0x000000ac                __vector_11
-                0x000000ac                __vector_13
                 0x000000ac                __vector_17
                 0x000000ac                __vector_19
                 0x000000ac                __vector_7
@@ -276,9 +276,9 @@ END GROUP
                 0x000000da                led_put
  .text.main     0x000000e6        0xa main.o
                 0x000000e6                main
- .text.__vector_12
+ .text.__vector_13
                 0x000000f0       0x78 main.o
-                0x000000f0                __vector_12
+                0x000000f0                __vector_13
                 0x00000168                . = ALIGN (0x2)
  *(.fini9)
  .fini9         0x00000168        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
