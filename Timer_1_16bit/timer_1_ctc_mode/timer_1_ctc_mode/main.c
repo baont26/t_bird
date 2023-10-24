@@ -20,7 +20,7 @@ int main(void)
 	}
 }
 
-ISR(TIMER1_OVF_vect)
+ISR(TIMER1_COMPA_vect)
 {
 	
 	counter+=1;
@@ -51,7 +51,7 @@ void timer_1()
 
 void init_interrupt_timer1_nor()
 {
-	TIMSK =0x18;// TIMSK |= (1<<OCIE1A) | (1<<OCIE1B) ;
+	TIMSK |=1<<OCIE1A;
 	sei();
 }
 
